@@ -6,6 +6,7 @@ import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
 import java.lang.IllegalStateException
 import javax.inject.Singleton
+import javax.transaction.Transactional
 import javax.validation.Valid
 
 @Validated
@@ -21,6 +22,7 @@ class CadastraKeyService(
     * 3 -> salva
     * 4 -> retorna
     * */
+    @Transactional
     fun cadastra(@Valid novaChavePix: NovaChavePix):ChavePix{
         if(repository.existsByChave(novaChavePix.chave!!)){
             throw ChaveJaExistenteException("chave ${novaChavePix.chave} ja existente no sistema")

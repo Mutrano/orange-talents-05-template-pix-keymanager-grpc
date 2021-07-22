@@ -6,6 +6,7 @@ plugins {
     id("io.micronaut.application") version "1.5.3"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.4.32"
     id("com.google.protobuf") version "0.8.15"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.4.32"
 }
 
 version = "0.1"
@@ -25,6 +26,7 @@ micronaut {
 }
 
 dependencies {
+    kapt("io.micronaut.data:micronaut-data-processor")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut.grpc:micronaut-grpc-runtime")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
@@ -33,6 +35,11 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    runtimeOnly("org.postgresql:postgresql")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("org.hibernate:hibernate-validator:6.1.6.Final")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

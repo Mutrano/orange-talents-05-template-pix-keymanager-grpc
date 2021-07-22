@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zupacademy.mario";
+option java_outer_classname = "PixKeyManagerGrpc";
+option objc_class_prefix = "HLW";
+
+package br.com.zupacademy.mario;
+
+service PixKeyManagerCadastraGrpcService {
+  rpc cadastra(CadastraKeyRequest) returns (CadastraKeyResponse) {}
+}
+
+
+enum TipoDeChave{
+    UNKNOWN_TIPO_CHAVE = 0;
+    CPF = 1;
+    CELULAR = 2;
+    EMAIL = 3;
+    ALEATORIA = 4;
+}
+
+enum TipoDeConta{
+    UNKNOWN_TIPO_CONTA = 0;
+    CONTA_POUPANCA = 1;
+    CONTA_CORRENTE = 2;
+}
+
+message CadastraKeyRequest{
+    string clienteId= 1;
+    TipoDeChave tipoDeChave = 2;
+    string chave = 3;
+    TipoDeConta tipoDeConta =4;
+}
+
+message CadastraKeyResponse{
+    string clienteId =1;
+    string pixId = 2;
+
+}

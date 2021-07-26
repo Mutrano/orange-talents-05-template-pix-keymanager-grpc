@@ -10,6 +10,9 @@ package br.com.zupacademy.mario;
 service PixKeyManagerCadastraGrpcService {
   rpc cadastra(CadastraKeyRequest) returns (CadastraKeyResponse) {}
 }
+service PixKeyManagerDeletaGrpcService{
+    rpc deleta(DeletaKeyRequest) returns (DeletaKeyResponse){}
+}
 
 
 enum TipoDeChave{
@@ -37,4 +40,15 @@ message CadastraKeyResponse{
     string clienteId =1;
     string pixId = 2;
 
+}
+
+
+message DeletaKeyRequest{
+    string clienteId =1;
+    string pixId = 2;
+}
+
+message DeletaKeyResponse{
+    string clienteId =1;
+    string pixId = 2;
 }

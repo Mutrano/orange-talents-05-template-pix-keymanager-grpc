@@ -1,6 +1,8 @@
 package br.com.zupacademy.mario.shared.handlers
 
 import br.com.zupacademy.mario.pix.exceptions.ChaveJaExistenteException
+import br.com.zupacademy.mario.pix.exceptions.ChaveNaoEhDoClienteException
+import br.com.zupacademy.mario.pix.exceptions.ChaveNaoEncontradaException
 import br.com.zupacademy.mario.pix.exceptions.ClienteNaoEncontradoException
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
@@ -31,6 +33,12 @@ class ErrorAroundHandlerInterceptor : MethodInterceptor<Any, Any> {
                     .withCause(ex)
                     .withDescription(ex.message)
                 is ClienteNaoEncontradoException -> Status.NOT_FOUND
+                    .withCause(ex)
+                    .withDescription(ex.message)
+                is ChaveNaoEncontradaException -> Status.NOT_FOUND
+                    .withCause(ex)
+                    .withDescription(ex.message)
+                is ChaveNaoEhDoClienteException -> Status.FAILED_PRECONDITION
                     .withCause(ex)
                     .withDescription(ex.message)
                 else -> Status.UNKNOWN

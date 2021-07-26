@@ -2,6 +2,7 @@ package br.com.zupacademy.mario.pix
 
 import br.com.zupacademy.mario.integration.ContaDoClienteNoItauClient
 import br.com.zupacademy.mario.pix.exceptions.ChaveJaExistenteException
+import br.com.zupacademy.mario.pix.exceptions.ClienteNaoEncontradoException
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
 import java.lang.IllegalStateException
@@ -28,7 +29,10 @@ class CadastraKeyService(
             throw ChaveJaExistenteException("chave ${novaChavePix.chave} ja existente no sistema")
         }
         val contaClienteResponse = itauClient.buscaContaPorTipo(novaChavePix.clienteId!!,novaChavePix.tipoDeConta!!.name)
-        val conta = contaClienteResponse.body()?.paraConta() ?: throw IllegalStateException("Cliente não encontrado no Itaú")
+
+        val conta = contaClienteResponse.body()?.paraConta() ?:
+            throw ClienteNaoEncontradoException("Cliente ${novaChavePix.clienteId} não encontrado no Itaú")
+
 
         val chaveSalva = novaChavePix.paraChave(conta)
         repository.save(chaveSalva)

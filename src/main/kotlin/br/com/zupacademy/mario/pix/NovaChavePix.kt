@@ -15,7 +15,7 @@ data class NovaChavePix(
     val clienteId: String?,
 
     @field:NotNull
-    val tipo:TipoDeChave?,
+    val tipo: TipoDeChave?,
 
     @field:NotNull
     @field:Size(max=77)
@@ -25,7 +25,7 @@ data class NovaChavePix(
     val tipoDeConta: TipoDeConta?
 
 ){
-    fun paraChave(contaAssociada: ContaAssociada):ChavePix{
+    fun paraChave(contaAssociada: ContaAssociada): ChavePix {
         return ChavePix(
             clienteId = UUID.fromString(this.clienteId),
             tipo = TipoDeChave.valueOf(this.tipo!!.name),

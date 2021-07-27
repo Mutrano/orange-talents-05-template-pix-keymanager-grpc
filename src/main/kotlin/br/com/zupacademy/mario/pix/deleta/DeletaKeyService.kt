@@ -1,9 +1,8 @@
-package br.com.zupacademy.mario.pix
+package br.com.zupacademy.mario.pix.deleta
 
-import br.com.zupacademy.mario.integration.ContaDoClienteNoItauClient
+import br.com.zupacademy.mario.pix.ChavePixRepository
 import br.com.zupacademy.mario.pix.exceptions.ChaveNaoEhDoClienteException
 import br.com.zupacademy.mario.pix.exceptions.ChaveNaoEncontradaException
-import br.com.zupacademy.mario.pix.exceptions.ClienteNaoEncontradoException
 import br.com.zupacademy.mario.pix.validations.ValidUUID
 import io.micronaut.validation.Validated
 import java.util.*

@@ -1,11 +1,13 @@
-package br.com.zupacademy.mario.pix
+package br.com.zupacademy.mario.pix.cadastra
 
 import br.com.zupacademy.mario.integration.ContaDoClienteNoItauClient
+import br.com.zupacademy.mario.pix.ChavePix
+import br.com.zupacademy.mario.pix.ChavePixRepository
+import br.com.zupacademy.mario.pix.NovaChavePix
 import br.com.zupacademy.mario.pix.exceptions.ChaveJaExistenteException
 import br.com.zupacademy.mario.pix.exceptions.ClienteNaoEncontradoException
 import io.micronaut.validation.Validated
 import org.slf4j.LoggerFactory
-import java.lang.IllegalStateException
 import javax.inject.Singleton
 import javax.transaction.Transactional
 import javax.validation.Valid
@@ -24,7 +26,7 @@ class CadastraKeyService(
     * 4 -> retorna
     * */
     @Transactional
-    fun cadastra(@Valid novaChavePix: NovaChavePix):ChavePix{
+    fun cadastra(@Valid novaChavePix: NovaChavePix): ChavePix {
         if(repository.existsByChave(novaChavePix.chave!!)){
             throw ChaveJaExistenteException("chave ${novaChavePix.chave} ja existente no sistema")
         }

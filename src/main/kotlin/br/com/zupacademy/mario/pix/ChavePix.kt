@@ -26,7 +26,7 @@ class ChavePix(
     val tipoDeConta: TipoDeConta,
 
     @Embedded
-    val contaAssociada:ContaAssociada
+    val contaAssociada: ContaAssociada
 ) {
     @Id
     @GeneratedValue

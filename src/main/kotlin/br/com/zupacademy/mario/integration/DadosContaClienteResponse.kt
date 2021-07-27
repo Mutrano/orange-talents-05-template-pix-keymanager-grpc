@@ -9,7 +9,7 @@ data class DadosContaClienteResponse(
     val numero: String,
     val titular: TitularResponse,
 ){
-    fun paraConta():ContaAssociada{
+    fun paraConta(): ContaAssociada {
         return ContaAssociada(
             cpfDoTitular = titular.cpf,
             instituicao = instituicao.nome,

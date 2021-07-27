@@ -9,7 +9,6 @@ import io.grpc.stub.StreamObserver
 import io.micronaut.aop.InterceptorBean
 import io.micronaut.aop.MethodInterceptor
 import io.micronaut.aop.MethodInvocationContext
-import java.lang.IllegalStateException
 import javax.inject.Singleton
 import javax.validation.ConstraintViolationException
 

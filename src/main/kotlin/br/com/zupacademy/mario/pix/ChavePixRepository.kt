@@ -11,5 +11,5 @@ interface ChavePixRepository:JpaRepository<ChavePix,Long> {
 
     fun existsByPixId(pixId:UUID):Boolean
 
-    fun findByPixIdAndClienteId(pixId:UUID,clienteId:UUID):ChavePix?
+    fun findByPixIdAndClienteId(pixId:UUID,clienteId:UUID): ChavePix?
 }

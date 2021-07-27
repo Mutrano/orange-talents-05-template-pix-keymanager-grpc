@@ -1,4 +1,4 @@
-package br.com.zupacademy.mario.pix
+package br.com.zupacademy.mario.pix.cadastra
 
 import br.com.zupacademy.mario.CadastraKeyRequest
 import br.com.zupacademy.mario.PixKeyManagerCadastraGrpcServiceGrpc
@@ -8,25 +8,21 @@ import br.com.zupacademy.mario.integration.ContaDoClienteNoItauClient
 import br.com.zupacademy.mario.integration.DadosContaClienteResponse
 import br.com.zupacademy.mario.integration.InstituicaoResponse
 import br.com.zupacademy.mario.integration.TitularResponse
+import br.com.zupacademy.mario.pix.ChavePixRepository
+import br.com.zupacademy.mario.pix.paraNovaChave
 import io.grpc.ManagedChannel
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.micronaut.context.annotation.Factory
 import io.micronaut.grpc.annotation.GrpcChannel
 import io.micronaut.http.HttpResponse
-import io.micronaut.http.HttpResponse.ok
-import io.micronaut.http.client.exceptions.HttpClientException
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito
-import org.mockito.Mockito.mock
-import java.nio.channels.spi.AbstractInterruptibleChannel
-import javax.inject.Inject
 import javax.inject.Singleton
 
 

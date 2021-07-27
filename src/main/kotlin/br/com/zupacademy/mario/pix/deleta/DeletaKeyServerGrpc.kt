@@ -1,8 +1,7 @@
-package br.com.zupacademy.mario.pix
+package br.com.zupacademy.mario.pix.deleta
 
 import br.com.zupacademy.mario.DeletaKeyRequest
 import br.com.zupacademy.mario.DeletaKeyResponse
-import br.com.zupacademy.mario.PixKeyManagerCadastraGrpcServiceGrpc
 import br.com.zupacademy.mario.PixKeyManagerDeletaGrpcServiceGrpc
 import br.com.zupacademy.mario.shared.handlers.ErrorAroundHandler
 import io.grpc.stub.StreamObserver

@@ -1,12 +1,11 @@
-package br.com.zupacademy.mario
+package br.com.zupacademy.mario.pix.cadastra
 
-import br.com.zupacademy.mario.integration.ContaDoClienteNoItauClient
-import br.com.zupacademy.mario.pix.CadastraKeyService
-import br.com.zupacademy.mario.pix.ChavePixRepository
+import br.com.zupacademy.mario.CadastraKeyRequest
+import br.com.zupacademy.mario.CadastraKeyResponse
+import br.com.zupacademy.mario.PixKeyManagerCadastraGrpcServiceGrpc
 import br.com.zupacademy.mario.pix.paraNovaChave
 import br.com.zupacademy.mario.shared.handlers.ErrorAroundHandler
 import io.grpc.stub.StreamObserver
-import org.slf4j.LoggerFactory
 import javax.inject.Singleton
 
 @ErrorAroundHandler

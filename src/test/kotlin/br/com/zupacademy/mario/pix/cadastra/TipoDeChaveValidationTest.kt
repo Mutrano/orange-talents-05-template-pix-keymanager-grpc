@@ -1,5 +1,6 @@
-package br.com.zupacademy.mario.pix
+package br.com.zupacademy.mario.pix.cadastra
 
+import br.com.zupacademy.mario.pix.TipoDeChave
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested

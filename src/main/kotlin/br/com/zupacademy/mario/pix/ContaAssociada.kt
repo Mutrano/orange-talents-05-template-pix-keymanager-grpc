@@ -22,5 +22,7 @@ class ContaAssociada(
     @Column(name = "conta_titular_nome", nullable = false)
     val titular: String,
 ) {
-
+    companion object{
+        val ispb = "60701190"
+    }
 }

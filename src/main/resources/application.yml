@@ -14,3 +14,5 @@ jpa.default.properties.hibernate.hbm2ddl.auto: update
 itau:
   contas:
     url: ${ITAU_URL:`http://localhost:9091`}
+bcb:
+  url: ${BCB_URL:`http://localhost:8082/api/v1/pix/keys`}

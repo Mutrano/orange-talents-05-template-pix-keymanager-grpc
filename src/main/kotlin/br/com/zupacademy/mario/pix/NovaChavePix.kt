@@ -1,9 +1,9 @@
 package br.com.zupacademy.mario.pix
 
+import br.com.zupacademy.mario.integration.*
 import br.com.zupacademy.mario.pix.validations.ValidPixKey
 import br.com.zupacademy.mario.pix.validations.ValidUUID
 import io.micronaut.core.annotation.Introspected
-import java.util.*
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
@@ -25,13 +25,20 @@ data class NovaChavePix(
     val tipoDeConta: TipoDeConta?
 
 ){
-    fun paraChave(contaAssociada: ContaAssociada): ChavePix {
-        return ChavePix(
-            clienteId = UUID.fromString(this.clienteId),
-            tipo = TipoDeChave.valueOf(this.tipo!!.name),
-            chave = if(this.tipo == TipoDeChave.ALEATORIA) UUID.randomUUID().toString() else this.chave!!,
-            tipoDeConta = TipoDeConta.valueOf(this.tipoDeConta!!.name),
-            contaAssociada = contaAssociada
+    fun paraCadastroBCB(contaAssociada: ContaAssociada):CadastraChaveRequest {
+        return CadastraChaveRequest(
+            keyType = tipo!!.paraEnumBcb().name,
+            key = if(this.tipo == TipoDeChave.ALEATORIA) "" else this.chave!!,
+            bankAccount = ContaRequest(
+                participant = ContaAssociada.ispb,
+                branch = contaAssociada.agencia,
+                accountNumber = contaAssociada.numero,
+                accountType = tipoDeConta!!.paraEnumBcb().name
+            ), owner = TitularRequest(
+                type = "NATURAL_PERSON",
+                name = contaAssociada.titular,
+                taxIdNumber = contaAssociada.cpfDoTitular
+            )
         )
     }
 }
